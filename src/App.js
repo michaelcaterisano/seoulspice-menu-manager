@@ -3,6 +3,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
 import "./App.css";
 
 export default function App() {
@@ -34,7 +35,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            <About />
+            <Profile />
           </Route>
           <Route path="/users">
             <Users />
