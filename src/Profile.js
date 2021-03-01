@@ -16,7 +16,7 @@ const Profile = () => {
       const token = await getAccessTokenSilently();
 
       const response = await fetch(
-        `${process.env.REACT_APP_SEOULSPICE_API_URL}/menu-test`,
+        `${process.env.REACT_APP_SEOULSPICE_API_URL}/ingredients`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
