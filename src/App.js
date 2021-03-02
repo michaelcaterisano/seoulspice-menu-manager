@@ -18,13 +18,7 @@ export default function App() {
           {isAuthenticated && <LogoutButton />}
         </nav>
         <Switch>
-          <Route path="/about">
-            <Profile />
-          </Route>
-
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/">{isAuthenticated && <Profile />}</Route>
         </Switch>
       </div>
     </Router>

@@ -30,6 +30,8 @@ const Profile = () => {
 
   const handleSubmit = (ingredients) => {
     setIngredientsOutOfStock({token, ingredients, locationId});
+    setIngredients(null);
+    setLocationId(null);
   };
 
   return (
