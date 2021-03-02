@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import {getLocations, getIngredients} from "../services/apiService";
+import {
+  getLocations,
+  getIngredients,
+  setIngredientsOutOfStock,
+} from "../services/apiService";
 import ChooseLocation from "./ChooseLocation";
 import Ingredients from "./Ingredients";
 
@@ -24,22 +28,35 @@ const Profile = () => {
     setIngredients(ingredients);
   };
 
+  const handleSubmit = (ingredients) => {
+    setIngredientsOutOfStock({token, ingredients, locationId});
+  };
+
   return (
-    isAuthenticated &&
-    locations && (
-      <div>
-        {/* profile
+    <div>
+      {isAuthenticated && locations && (
+        <div>
+          {/* profile
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
         <h3>User Metadata</h3> */}
-        <p>{locationId}</p>
-        <ChooseLocation locations={locations} selectLocation={selectLocation} />
-        {ingredients && (
-          <Ingredients ingredients={ingredients} locationId={locationId} />
-        )}
-      </div>
-    )
+          {!locationId && (
+            <ChooseLocation
+              locations={locations}
+              selectLocation={selectLocation}
+            />
+          )}
+          {ingredients && (
+            <Ingredients
+              ingredients={ingredients}
+              locationId={locationId}
+              onSubmit={handleSubmit}
+            />
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 

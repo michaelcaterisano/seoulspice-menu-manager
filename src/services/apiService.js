@@ -32,4 +32,23 @@ const getIngredients = async (token) => {
   }
 };
 
-export {getLocations, getIngredients};
+const setIngredientsOutOfStock = async ({token, ingredients, locationId}) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_SEOULSPICE_API_URL}/ingredients-out-of-stock`,
+      {
+        method: "post",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ingredients, locationId}),
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {getLocations, getIngredients, setIngredientsOutOfStock};
