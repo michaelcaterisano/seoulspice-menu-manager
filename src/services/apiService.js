@@ -8,11 +8,28 @@ const getLocations = async (token) => {
         },
       }
     );
-    const locations = await response.json();
+    const locations = response.json();
     return locations;
   } catch (error) {
     console.log(error);
   }
 };
 
-export {getLocations};
+const getIngredients = async (token) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_SEOULSPICE_API_URL}/ingredients`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const ingredients = response.json();
+    return ingredients;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {getLocations, getIngredients};
