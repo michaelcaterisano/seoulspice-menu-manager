@@ -42,24 +42,28 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
   };
 
   return (
-    <FormGroup column>
-      <h3>Mark items out of stock</h3>
-      {state.map((item) => {
-        return (
-          <FormControlLabel
-            control={
-              <Switch
-                checked={item.outOfStock}
-                onChange={(e) => handleChange(e, item.id)}
-                name={item.id}
-              />
-            }
-            label={item.name}
-          />
-        );
-      })}
-      <Button onClick={handleSubmit}>submit</Button>
-    </FormGroup>
+    <React.Fragment>
+      <FormGroup column>
+        <h3>Mark items out of stock</h3>
+        {state.map((item) => {
+          return (
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={item.outOfStock}
+                  onChange={(e) => handleChange(e, item.id)}
+                  name={item.id}
+                />
+              }
+              label={item.name}
+            />
+          );
+        })}
+      </FormGroup>
+      <Button onClick={handleSubmit} variant="contained" color="primary">
+        submit
+      </Button>
+    </React.Fragment>
   );
 };
 
