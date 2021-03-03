@@ -1,4 +1,8 @@
 import React, {useEffect, useState} from "react";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
 
 const Ingredients = ({ingredients, locationId, onSubmit}) => {
   let initialState = ingredients.map((ingredient) => {
@@ -38,21 +42,24 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
   };
 
   return (
-    <div>
+    <FormGroup column>
+      <h3>Mark items out of stock</h3>
       {state.map((item) => {
         return (
-          <label key={item.id}>
-            <input
-              type="checkbox"
-              checked={item.outOfStock}
-              onChange={(e) => handleChange(e, item.id)}
-            ></input>
-            {item.name}
-          </label>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={item.outOfStock}
+                onChange={(e) => handleChange(e, item.id)}
+                name={item.id}
+              />
+            }
+            label={item.name}
+          />
         );
       })}
-      <button onClick={handleSubmit}>submit</button>
-    </div>
+      <Button onClick={handleSubmit}>submit</Button>
+    </FormGroup>
   );
 };
 
