@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: "350px",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -38,7 +37,8 @@ const ChooseLocation = ({locations, selectLocation}) => {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="age-native-simple">Select Location</InputLabel>
+        <Box component="h1">Choose a location to edit</Box>
+
         <Select
           native
           value={locationId}
