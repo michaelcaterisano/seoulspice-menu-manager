@@ -4,6 +4,21 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Profile from "./components/Profile";
 import {AppBar, Button, Container, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {ThemeProvider} from "@material-ui/core/styles";
+import {createMuiTheme} from "@material-ui/core/styles";
+import {yellow, green, red} from "@material-ui/core/colors";
+
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: {
+//       main: yellow[500],
+
+//     },
+//     secondary: {
+//       main: red[500],
+//     },
+//   },
+// });
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -23,7 +38,7 @@ export default function App() {
   } = useAuth0();
 
   return (
-    <React.Fragment>
+    <ThemeProvider>
       <AppBar>
         <Toolbar>
           {!isAuthenticated && (
@@ -39,7 +54,7 @@ export default function App() {
       <main className={classes.main}>
         <Container>{isAuthenticated && <Profile />}</Container>
       </main>
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 

@@ -60,7 +60,7 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
           );
         })}
       </FormGroup>
-      <Button onClick={handleSubmit} variant="contained" color="primary">
+      <Button onClick={handleSubmit} variant="contained" color="secondary">
         submit
       </Button>
     </React.Fragment>
