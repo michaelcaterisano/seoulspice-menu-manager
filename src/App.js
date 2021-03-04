@@ -8,18 +8,6 @@ import {ThemeProvider} from "@material-ui/core/styles";
 import {createMuiTheme} from "@material-ui/core/styles";
 import {yellow, green, red} from "@material-ui/core/colors";
 
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: {
-//       main: yellow[500],
-
-//     },
-//     secondary: {
-//       main: red[500],
-//     },
-//   },
-// });
-
 const useStyles = makeStyles((theme) => ({
   main: {
     paddingTop: theme.spacing(10),
@@ -42,10 +30,20 @@ export default function App() {
       <AppBar>
         <Toolbar>
           {!isAuthenticated && (
-            <Button onClick={() => loginWithRedirect()}>Login</Button>
+            <Button
+              color="info"
+              variant="contained"
+              onClick={() => loginWithRedirect()}
+            >
+              Login
+            </Button>
           )}
           {isAuthenticated && (
-            <Button onClick={() => logout({returnTo: window.location.origin})}>
+            <Button
+              color="info"
+              variant="contained"
+              onClick={() => logout({returnTo: window.location.origin})}
+            >
               Logout
             </Button>
           )}

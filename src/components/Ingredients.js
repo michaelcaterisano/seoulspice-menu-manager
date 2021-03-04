@@ -3,6 +3,17 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+
+const styles = {
+  paper: {
+    padding: "20px",
+  },
+  button: {
+    marginTop: "10px",
+  },
+};
 
 const Ingredients = ({ingredients, locationId, onSubmit}) => {
   let initialState = ingredients.map((ingredient) => {
@@ -42,7 +53,7 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
   };
 
   return (
-    <React.Fragment>
+    <Paper style={styles.paper}>
       <FormGroup column>
         <h3>Mark items out of stock</h3>
         {state.map((item) => {
@@ -60,10 +71,15 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
           );
         })}
       </FormGroup>
-      <Button onClick={handleSubmit} variant="contained" color="secondary">
+      <Button
+        style={styles.button}
+        onClick={handleSubmit}
+        variant="contained"
+        color="primary"
+      >
         submit
       </Button>
-    </React.Fragment>
+    </Paper>
   );
 };
 

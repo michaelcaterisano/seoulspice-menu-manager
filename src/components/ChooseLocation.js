@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  nextButton: {
+    margin: "5px 0 0 8px",
+  },
 }));
 
 const ChooseLocation = ({locations, selectLocation}) => {
@@ -53,7 +56,12 @@ const ChooseLocation = ({locations, selectLocation}) => {
         </Select>
       </FormControl>
       <br />
-      <Button onClick={handleClick} variant="contained" color="primary">
+      <Button
+        className={classes.nextButton}
+        onClick={handleClick}
+        color="primary"
+        variant="contained"
+      >
         next
       </Button>
     </div>
