@@ -59,7 +59,7 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
   return (
     <Paper className={classes.paper}>
       <FormGroup column>
-        <Box component="h1">Choose a location to edit</Box>
+        <Box component="h1">Mark ingredients out of stock</Box>
         {state.map((item) => {
           return (
             <FormControlLabel
