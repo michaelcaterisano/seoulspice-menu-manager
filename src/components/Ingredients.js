@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from "react";
+import {makeStyles} from "@material-ui/core/styles";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
   paper: {
     padding: "20px",
+    // textAlign: "center",
   },
   button: {
-    marginTop: "10px",
+    margin: "20px 0 0 0",
   },
-};
+}));
 
 const Ingredients = ({ingredients, locationId, onSubmit}) => {
+  const classes = useStyles();
+
   let initialState = ingredients.map((ingredient) => {
     return {
       id: ingredient._id,
@@ -53,9 +57,9 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
   };
 
   return (
-    <Paper style={styles.paper}>
+    <Paper className={classes.paper}>
       <FormGroup column>
-        <h3>Mark items out of stock</h3>
+        <Box component="h1">Choose a location to edit</Box>
         {state.map((item) => {
           return (
             <FormControlLabel
@@ -70,15 +74,16 @@ const Ingredients = ({ingredients, locationId, onSubmit}) => {
             />
           );
         })}
+        <Button
+          size="large"
+          className={classes.button}
+          onClick={handleSubmit}
+          variant="contained"
+          color="primary"
+        >
+          submit
+        </Button>
       </FormGroup>
-      <Button
-        style={styles.button}
-        onClick={handleSubmit}
-        variant="contained"
-        color="primary"
-      >
-        submit
-      </Button>
     </Paper>
   );
 };

@@ -28,14 +28,14 @@ const Profile = () => {
     setIngredients(ingredients);
   };
 
-  const handleSubmit = (ingredients) => {
-    setIngredientsOutOfStock({token, ingredients, locationId});
+  const handleSubmit = async (ingredients) => {
+    await setIngredientsOutOfStock({token, ingredients, locationId});
     setIngredients(null);
     setLocationId(null);
   };
 
   return (
-    <div>
+    <section>
       {isAuthenticated && locations && (
         <div>
           {!locationId && (
@@ -53,7 +53,7 @@ const Profile = () => {
           )}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

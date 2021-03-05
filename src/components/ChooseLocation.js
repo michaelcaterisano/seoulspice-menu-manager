@@ -4,17 +4,20 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: "350px",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
   nextButton: {
-    margin: "5px 0 0 8px",
+    margin: "20px 0 0 0",
+  },
+  paper: {
+    padding: "20px",
   },
 }));
 
@@ -35,7 +38,7 @@ const ChooseLocation = ({locations, selectLocation}) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <Paper className={classes.paper}>
       <FormControl className={classes.formControl}>
         <Box component="h1">Choose a location to edit</Box>
 
@@ -54,17 +57,18 @@ const ChooseLocation = ({locations, selectLocation}) => {
             </option>
           ))}
         </Select>
+        <Button
+          size="large"
+          className={classes.nextButton}
+          onClick={handleClick}
+          color="primary"
+          variant="contained"
+        >
+          next
+        </Button>
       </FormControl>
       <br />
-      <Button
-        className={classes.nextButton}
-        onClick={handleClick}
-        color="primary"
-        variant="contained"
-      >
-        next
-      </Button>
-    </div>
+    </Paper>
   );
 };
 

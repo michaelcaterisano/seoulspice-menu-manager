@@ -8,6 +8,7 @@ import {AppBar, Box, Toolbar, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ThemeProvider} from "@material-ui/core/styles";
 import {createMuiTheme} from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const theme = createMuiTheme();
 
@@ -19,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   root: {
-    flexGrow: 1,
-    maxWidth: "600px",
+    // flexGrow: 1,
+    // maxWidth: "600px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -52,7 +53,10 @@ export default function App() {
         </Toolbar>
       </AppBar>
       <main className={classes.main}>
-        {!isAuthenticated && <Box component="h1">Login to edit menu</Box>}
+        {isLoading && <CircularProgress />}
+        {!isLoading && !isAuthenticated && (
+          <Box component="h1">Login to edit menu</Box>
+        )}
         {isAuthenticated && <Profile />}
       </main>
     </ThemeProvider>
